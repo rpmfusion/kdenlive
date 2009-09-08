@@ -1,6 +1,6 @@
 Name:           kdenlive
-Version:        0.7.4
-Release:        2%{?dist}
+Version:        0.7.5
+Release:        1%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
 Group:          Applications/Multimedia
@@ -28,6 +28,10 @@ recent video technologies.
 
 %prep
 %setup -q
+
+# MLT's binary melt renamed at Fedora, so we must rename it in Kdenlive, too
+sed -i 's|/bin/melt|/bin/mlt-melt|' src/mainwindow.cpp
+sed -i 's|findExe("melt")|findExe("mlt-melt")|' src/mainwindow.cpp
 
 %build
 %cmake_kde4
@@ -79,10 +83,15 @@ gtk-update-icon-cache %{_kde4_datadir}/icons/hicolor &>/dev/null || :
 %{_kde4_appsdir}/%{name}
 %{_kde4_datadir}/kde4/services/westleypreview.desktop
 %{_kde4_datadir}/icons/hicolor/*
+%{_kde4_datadir}/menu/%{name}
+%{_kde4_datadir}/pixmaps/%{name}.xpm
 %{_kde4_datadir}/icons/oxygen/*
 %{_mandir}/man1/*.gz
 
 %changelog
+* Mon Sep 07 2009 Zarko <zarko.pintar@gmail.com> - 0.7.5-1
+- new version
+
 * Sat May 30 2009 Zarko <zarko.pintar@gmail.com> - 0.7.4-2
 - added updating of mime database
 - changed dir of .desktop file
