@@ -1,0 +1,12 @@
+--- kdenlive-0.7.6//src/dvdwizardchapters.cpp	2009/09/25 21:02:41	3929
++++ kdenlive-0.7.6/src/dvdwizardchapters.cpp	2009/10/10 11:46:15	4032
+@@ -151,7 +151,7 @@
+     if (m_monitor == NULL) {
+ 
+         m_monitor = new Monitor("chapter", m_manager, profile, this);
+-        m_monitor->start();
++        //m_monitor->start();
+         QVBoxLayout *vbox = new QVBoxLayout;
+         vbox->addWidget(m_monitor);
+         m_view.monitor_frame->setLayout(vbox);
+ 
