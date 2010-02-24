@@ -1,12 +1,11 @@
 Name:           kdenlive
-Version:        0.7.6
+Version:        0.7.7
 Release:        1%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
 Group:          Applications/Multimedia
 URL:            http://www.kdenlive.org
 Source:         http://downloads.sourceforge.net/kdenlive/%{name}-%{version}.tar.gz
-Patch0:         kdenlive-0.7.6-dvdwizard.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 
@@ -29,8 +28,7 @@ recent video technologies.
 
 %prep
 %setup -q
-# Patch for resolve crash when Kdenlive calls DVDWizard
-%patch0 -p1 -b .dvdwizard
+
 # MLT's binary melt renamed at Fedora, so we must rename it in Kdenlive, too
 sed -i 's|/bin/melt|/bin/mlt-melt|' src/mainwindow.cpp
 sed -i 's|findExe("melt")|findExe("mlt-melt")|' src/mainwindow.cpp
@@ -91,9 +89,8 @@ gtk-update-icon-cache %{_kde4_datadir}/icons/hicolor &>/dev/null || :
 %{_mandir}/man1/*.gz
 
 %changelog
-* Thu Oct 08 2009 Zarko <zarko.pintar@gmail.com> - 0.7.6-1
+* Thu Feb 18 2010 Zarko <zarko.pintar@gmail.com> - 0.7.7-1
 - new version
-- added dwdwizard patch
 
 * Mon Sep 07 2009 Zarko <zarko.pintar@gmail.com> - 0.7.5-1
 - new version
