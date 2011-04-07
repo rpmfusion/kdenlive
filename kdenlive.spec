@@ -1,5 +1,5 @@
 Name:           kdenlive
-Version:        0.7.7.1
+Version:        0.7.8
 Release:        1%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
@@ -89,6 +89,9 @@ gtk-update-icon-cache %{_kde4_datadir}/icons/hicolor &>/dev/null || :
 %{_mandir}/man1/*.gz
 
 %changelog
+* Thu Apr 07 2011 Ryan Rix <ry@n.rix.si> - 0.7.8-1
+- new version
+
 * Mon Mar 01 2010 Zarko <zarko.pintar@gmail.com> - 0.7.7.1-1
 - new version
 
