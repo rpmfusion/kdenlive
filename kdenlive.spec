@@ -1,6 +1,6 @@
 Name:           kdenlive
 Version:        0.7.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
 Group:          Applications/Multimedia
@@ -8,18 +8,21 @@ URL:            http://www.kdenlive.org
 Source:         http://downloads.sourceforge.net/kdenlive/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
+## upstreamable patches
+Patch100: kdenlive-0.7.8-gcc46.patch
 
-BuildRequires:  cmake
+BuildRequires:  desktop-file-utils 
 BuildRequires:  gettext
-BuildRequires:  kdelibs-devel
+BuildRequires:  kdelibs4-devel
 BuildRequires:  mlt-devel
-BuildRequires:  soprano-devel
-BuildRequires: desktop-file-utils
-Requires:       recordmydesktop
+
+Requires:       dvdauthor
 Requires:       dvgrab
 Requires:       ffmpeg
-Requires:       dvdauthor
-
+# kdebase-runtime could be reduced to kdelibs4%{?_isa} instead, 
+# if you don't mind missing many niceties -- Rex
+Requires:       kdebase-runtime%{?_kde4_version: >= %{_kde4_version}}
+Requires:       recordmydesktop
 
 %description
 Kdenlive is an intuitive and powerful multi-track video editor, including most
@@ -29,24 +32,34 @@ recent video technologies.
 %prep
 %setup -q
 
+%patch100 -p1 -b .gcc46
+
 # MLT's binary melt renamed at Fedora, so we must rename it in Kdenlive, too
 sed -i 's|/bin/melt|/bin/mlt-melt|' src/mainwindow.cpp
 sed -i 's|findExe("melt")|findExe("mlt-melt")|' src/mainwindow.cpp
 
+# make palletable for %%doc later
+cp effects/README README.effects
+
+
 %build
-%cmake_kde4
-make %{?_smp_mflags}
+mkdir -p %{_target_platform}
+pushd %{_target_platform}
+%{cmake_kde4} ..
+popd
+
+make %{?_smp_mflags} -C %{_target_platform}
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make DESTDIR=$RPM_BUILD_ROOT install
-mv effects/README README.effects
+rm -rf %{buildroot} 
+make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
-%find_lang %{name}
+%find_lang %{name} --with-kde
+
 
 %check
-desktop-file-validate %{buildroot}/%{_kde4_datadir}/applications/kde4/%{name}.desktop
+desktop-file-validate %{buildroot}%{_kde4_datadir}/applications/kde4/%{name}.desktop
 
 
 %clean
@@ -54,22 +67,22 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %post
-touch --no-create %{_kde4_datadir}/icons/hicolor &>/dev/null || :
-update-desktop-database &> /dev/null || :
-update-mime-database %{_datadir}/mime &> /dev/null || :
-
+touch --no-create %{_kde4_iconsdir}/hicolor &>/dev/null || :
+touch --no-create %{_kde4_iconsdir}/oxygen &>/dev/null || :
 
 %postun
 if [ $1 -eq 0 ] ; then
-    touch --no-create %{_kde4_datadir}/icons/hicolor &>/dev/null
-    gtk-update-icon-cache %{_kde4_datadir}/icons/hicolor &>/dev/null || :
+  touch --no-create %{_kde4_datadir}/icons/hicolor &>/dev/null
+  gtk-update-icon-cache %{_kde4_datadir}/icons/hicolor &>/dev/null || :
+  update-mime-database %{_datadir}/mime &> /dev/null || :
+  update-desktop-database &> /dev/null || :
 fi
-update-desktop-database &> /dev/null || :
-update-mime-database %{_datadir}/mime &> /dev/null || :
-
 
 %posttrans
 gtk-update-icon-cache %{_kde4_datadir}/icons/hicolor &>/dev/null || :
+update-mime-database %{_datadir}/mime &> /dev/null || :
+update-desktop-database &> /dev/null || :
+
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
@@ -80,15 +93,22 @@ gtk-update-icon-cache %{_kde4_datadir}/icons/hicolor &>/dev/null || :
 %{_kde4_datadir}/config.kcfg/*
 %{_kde4_configdir}/*
 %{_kde4_datadir}/mime/packages/*
-%{_kde4_appsdir}/%{name}
+%{_kde4_appsdir}/%{name}/
 %{_kde4_datadir}/kde4/services/westleypreview.desktop
-%{_kde4_datadir}/icons/hicolor/*
+# menu/pixmaps is deprecated/legacy stuff, could likely omit from packaging -- Rex
 %{_kde4_datadir}/menu/%{name}
 %{_kde4_datadir}/pixmaps/%{name}.xpm
-%{_kde4_datadir}/icons/oxygen/*
+%{_kde4_iconsdir}/hicolor/*/*/*
+%{_kde4_iconsdir}/oxygen/*/*/*
 %{_mandir}/man1/*.gz
 
+
 %changelog
+* Fri Apr 15 2011 Rex Dieter <rdieter@fedoraproject.org> 0.7.8-2
+- update scriptlets, %%_kde4_... macros/best-practices
+- +Requires: kdebase-runtime (versioned)
+- fix ftbfs
+
 * Thu Apr 07 2011 Ryan Rix <ry@n.rix.si> - 0.7.8-1
 - new version
 
