@@ -1,6 +1,6 @@
 Name:           kdenlive
-Version:        0.7.8
-Release:        2%{?dist}
+Version:        0.8
+Release:        1%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
 Group:          Applications/Multimedia
@@ -8,13 +8,13 @@ URL:            http://www.kdenlive.org
 Source:         http://downloads.sourceforge.net/kdenlive/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-## upstreamable patches
-Patch100: kdenlive-0.7.8-gcc46.patch
+Patch101:       kdenlive-0.8-fix-glu.patch
 
 BuildRequires:  desktop-file-utils 
 BuildRequires:  gettext
 BuildRequires:  kdelibs4-devel
 BuildRequires:  mlt-devel
+BuildRequires:  qjson-devel
 
 Requires:       dvdauthor
 Requires:       dvgrab
@@ -23,6 +23,7 @@ Requires:       ffmpeg
 # if you don't mind missing many niceties -- Rex
 Requires:       kdebase-runtime%{?_kde4_version: >= %{_kde4_version}}
 Requires:       recordmydesktop
+Requires:       qjson
 
 %description
 Kdenlive is an intuitive and powerful multi-track video editor, including most
@@ -32,7 +33,7 @@ recent video technologies.
 %prep
 %setup -q
 
-%patch100 -p1 -b .gcc46
+%patch101 -p 1
 
 # MLT's binary melt renamed at Fedora, so we must rename it in Kdenlive, too
 sed -i 's|/bin/melt|/bin/mlt-melt|' src/mainwindow.cpp
@@ -104,6 +105,10 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Thu Jul 21 2011 Ryan Rix <ry@n.rix.si> 0.8-1
+- New version
+- Add patch to fix FTBFS
+
 * Fri Apr 15 2011 Rex Dieter <rdieter@fedoraproject.org> 0.7.8-2
 - update scriptlets, %%_kde4_... macros/best-practices
 - +Requires: kdebase-runtime (versioned)
