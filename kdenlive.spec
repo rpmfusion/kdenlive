@@ -14,6 +14,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  gettext
 BuildRequires:  kdelibs4-devel
 BuildRequires:  mlt-devel
+BuildRequires:  qjson-devel
 
 Requires:       dvdauthor
 Requires:       dvgrab
@@ -22,6 +23,7 @@ Requires:       ffmpeg
 # if you don't mind missing many niceties -- Rex
 Requires:       kdebase-runtime%{?_kde4_version: >= %{_kde4_version}}
 Requires:       recordmydesktop
+Requires:       qjson
 
 %description
 Kdenlive is an intuitive and powerful multi-track video editor, including most
