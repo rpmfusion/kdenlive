@@ -1,7 +1,7 @@
 
 Name:           kdenlive
 Version:        0.8.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
 Group:          Applications/Multimedia
@@ -107,6 +107,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Tue Nov 15 2011 Rex Dieter <rdieter@fedoraproject.org> 0.8.2-2
+- rebuild
+
 * Fri Nov 11 2011 Rex Dieter <rdieter@fedoraproject.org> 0.8.2-1
 - 0.8.2
 - tighten mlt deps
