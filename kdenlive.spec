@@ -1,7 +1,7 @@
 
 Name:           kdenlive
-Version:        0.8.2
-Release:        2%{?dist}
+Version:        0.8.2.1
+Release:        1%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
 Group:          Applications/Multimedia
@@ -35,7 +35,7 @@ recent video technologies.
 %prep
 %setup -q
 
-%patch101 -p 1
+%patch101 -p1
 
 # MLT's binary melt renamed at Fedora, so we must rename it in Kdenlive, too
 sed -i 's|/bin/melt|/bin/mlt-melt|' src/mainwindow.cpp
@@ -107,6 +107,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Sat Dec 10 2011 Rex Dieter <rdieter@fedoraproject.org> 0.8.2.1-1
+- 0.8.2.1
+
 * Tue Nov 15 2011 Rex Dieter <rdieter@fedoraproject.org> 0.8.2-2
 - rebuild
 
