@@ -1,7 +1,7 @@
 
 Name:           kdenlive
 Version:        0.8.2.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
 Group:          Applications/Multimedia
@@ -107,6 +107,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Fri Mar 02 2012 Nicolas Chauvet <kwizart@gmail.com> - 0.8.2.1-3
+- Rebuilt for c++ ABI breakage
+
 * Wed Feb 08 2012 Nicolas Chauvet <kwizart@gmail.com> - 0.8.2.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 
