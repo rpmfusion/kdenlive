@@ -1,22 +1,20 @@
 
 Name:           kdenlive
-Version:        0.8.2.1
-Release:        3%{?dist}
+Version:        0.9
+Release:        1%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
 Group:          Applications/Multimedia
 URL:            http://www.kdenlive.org
-Source:         http://downloads.sourceforge.net/kdenlive/%{name}-%{version}.tar.gz
+Source0:        http://download.kde.org/stable/kdenlive/%{version}/src/kdenlive-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-
-Patch101:       kdenlive-0.8-fix-glu.patch
 
 BuildRequires:  desktop-file-utils 
 BuildRequires:  gettext
 BuildRequires:  kdelibs4-devel
-BuildRequires:  mlt-devel >= 0.7.6 
-%global mlt_version %(pkg-config --modversion mlt++ 2>/dev/null || echo 0.7.6)
-BuildRequires:  qjson-devel
+BuildRequires:  pkgconfig(mlt++) >= 0.7.8
+%global mlt_version %(pkg-config --modversion mlt++ 2>/dev/null || echo 0.7.8)
+BuildRequires:  pkgconfig(QJson)
 
 Requires:       dvdauthor
 Requires:       dvgrab
@@ -34,8 +32,6 @@ recent video technologies.
 
 %prep
 %setup -q
-
-%patch101 -p1
 
 # MLT's binary melt renamed at Fedora, so we must rename it in Kdenlive, too
 sed -i 's|/bin/melt|/bin/mlt-melt|' src/mainwindow.cpp
@@ -107,6 +103,10 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Tue May 15 2012 Rex Dieter <rdieter@fedoraproject.org> 0.9-1
+- 0.9
+- pkgconfig-style deps
+
 * Fri Mar 02 2012 Nicolas Chauvet <kwizart@gmail.com> - 0.8.2.1-3
 - Rebuilt for c++ ABI breakage
 
