@@ -1,12 +1,12 @@
 
 Name:           kdenlive
-Version:        0.9
+Version:        0.9.2
 Release:        1%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
 Group:          Applications/Multimedia
 URL:            http://www.kdenlive.org
-Source0:        http://download.kde.org/stable/kdenlive/%{version}/src/kdenlive-%{version}.tar.gz
+Source0:        http://download.kde.org/stable/kdenlive/%{version}/src/kdenlive-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  desktop-file-utils 
@@ -103,6 +103,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Thu May 31 2012 Rex Dieter <rdieter@fedoraproject.org> 0.9.2-1
+- 0.9.2
+
 * Tue May 15 2012 Rex Dieter <rdieter@fedoraproject.org> 0.9-1
 - 0.9
 - pkgconfig-style deps
