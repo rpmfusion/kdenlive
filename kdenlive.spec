@@ -1,7 +1,7 @@
 
 Name:           kdenlive
 Version:        0.9.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
 Group:          Applications/Multimedia
@@ -103,6 +103,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Tue Jun 19 2012 Richard Shaw <hobbes1069@gmail.com> - 0.9.2-2
+- Rebuild for updated mlt.
+
 * Thu May 31 2012 Rex Dieter <rdieter@fedoraproject.org> 0.9.2-1
 - 0.9.2
 
