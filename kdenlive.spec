@@ -1,7 +1,7 @@
 
 Name:           kdenlive
-Version:        0.9.2
-Release:        2%{?dist}
+Version:        0.9.4
+Release:        1%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
 Group:          Applications/Multimedia
@@ -12,16 +12,15 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  desktop-file-utils 
 BuildRequires:  gettext
 BuildRequires:  kdelibs4-devel
-BuildRequires:  pkgconfig(mlt++) >= 0.7.8
+BuildRequires:  pkgconfig(libv4l2)
+BuildRequires:  pkgconfig(mlt++) >= 0.8.6
 %global mlt_version %(pkg-config --modversion mlt++ 2>/dev/null || echo 0.7.8)
 BuildRequires:  pkgconfig(QJson)
 
 Requires:       dvdauthor
 Requires:       dvgrab
 Requires:       ffmpeg
-# kdebase-runtime could be reduced to kdelibs4%{?_isa} instead, 
-# if you don't mind missing many niceties -- Rex
-Requires:       kdebase-runtime%{?_kde4_version: >= %{_kde4_version}}
+Requires:       kde-runtime%{?_kde4_version: >= %{_kde4_version}}
 Requires:       mlt%{?_isa} >= %{mlt_version}
 Requires:       recordmydesktop
 
@@ -103,6 +102,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Tue Jan 29 2013 Rex Dieter <rdieter@fedoraproject.org> 0.9.4-1
+- 0.9.4
+
 * Tue Jun 19 2012 Richard Shaw <hobbes1069@gmail.com> - 0.9.2-2
 - Rebuild for updated mlt.
 
