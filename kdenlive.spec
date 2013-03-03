@@ -1,7 +1,7 @@
 
 Name:           kdenlive
 Version:        0.9.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
 Group:          Applications/Multimedia
@@ -102,6 +102,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Sun Mar 03 2013 Nicolas Chauvet <kwizart@gmail.com> - 0.9.4-2
+- Mass rebuilt for Fedora 19 Features
+
 * Tue Jan 29 2013 Rex Dieter <rdieter@fedoraproject.org> 0.9.4-1
 - 0.9.4
 
