@@ -1,20 +1,18 @@
 
 Name:           kdenlive
-Version:        0.9.4
-Release:        2%{?dist}
+Version:        0.9.6
+Release:        1%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
-Group:          Applications/Multimedia
 URL:            http://www.kdenlive.org
 Source0:        http://download.kde.org/stable/kdenlive/%{version}/src/kdenlive-%{version}.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  desktop-file-utils 
 BuildRequires:  gettext
 BuildRequires:  kdelibs4-devel
 BuildRequires:  pkgconfig(libv4l2)
-BuildRequires:  pkgconfig(mlt++) >= 0.8.6
-%global mlt_version %(pkg-config --modversion mlt++ 2>/dev/null || echo 0.7.8)
+BuildRequires:  pkgconfig(mlt++) >= 0.8.8
+%global mlt_version %(pkg-config --modversion mlt++ 2>/dev/null || echo 0.8.8)
 BuildRequires:  pkgconfig(QJson)
 
 Requires:       dvdauthor
@@ -37,7 +35,7 @@ sed -i 's|/bin/melt|/bin/mlt-melt|' src/mainwindow.cpp
 sed -i 's|findExe("melt")|findExe("mlt-melt")|' src/mainwindow.cpp
 
 # make palletable for %%doc later
-cp effects/README README.effects
+cp -a effects/README README.effects
 
 
 %build
@@ -50,7 +48,6 @@ make %{?_smp_mflags} -C %{_target_platform}
 
 
 %install
-rm -rf %{buildroot} 
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 %find_lang %{name} --with-kde
@@ -58,10 +55,6 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 %check
 desktop-file-validate %{buildroot}%{_kde4_datadir}/applications/kde4/%{name}.desktop
-
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 
 %post
@@ -83,7 +76,6 @@ update-desktop-database &> /dev/null || :
 
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
 %doc AUTHORS COPYING README*
 %{_kde4_bindir}/*
 %{_kde4_datadir}/applications/kde4/%{name}.desktop
@@ -102,6 +94,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Sun Apr 07 2013 Rex Dieter <rdieter@fedoraproject.org> 0.9.6-1
+- 0.9.6
+
 * Sun Mar 03 2013 Nicolas Chauvet <kwizart@gmail.com> - 0.9.4-2
 - Mass rebuilt for Fedora 19 Features
 
