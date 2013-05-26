@@ -1,7 +1,7 @@
 
 Name:           kdenlive
 Version:        0.9.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
 URL:            http://www.kdenlive.org
@@ -94,6 +94,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Sun May 26 2013 Nicolas Chauvet <kwizart@gmail.com> - 0.9.6-2
+- Rebuilt for x264/FFmpeg
+
 * Sun Apr 07 2013 Rex Dieter <rdieter@fedoraproject.org> 0.9.6-1
 - 0.9.6
 
