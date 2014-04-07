@@ -1,7 +1,7 @@
 
 Name:           kdenlive
 Version:        0.9.6
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
 URL:            http://www.kdenlive.org
@@ -94,6 +94,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Mon Apr 07 2014 Nicolas Chauvet <kwizart@gmail.com> - 0.9.6-4
+- Rebuilt for rfbz#3209
+
 * Wed Oct 09 2013 Nicolas Chauvet <kwizart@gmail.com> - 0.9.6-3
 - rebuilt for mlt
 
