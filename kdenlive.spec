@@ -1,7 +1,7 @@
 
 Name:           kdenlive
-Version:        0.9.6
-Release:        4%{?dist}
+Version:        0.9.8
+Release:        1%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
 URL:            http://www.kdenlive.org
@@ -14,6 +14,7 @@ BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(mlt++) >= 0.8.8
 %global mlt_version %(pkg-config --modversion mlt++ 2>/dev/null || echo 0.8.8)
 BuildRequires:  pkgconfig(QJson)
+BuildRequires:  pkgconfig(QtOpenGL) pkgconfig(QtScript)
 
 Requires:       dvdauthor
 Requires:       dvgrab
@@ -94,6 +95,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Wed May 14 2014 Rex Dieter <rdieter@fedoraproject.org> 0.9.8-1
+- 0.9.8
+
 * Mon Apr 07 2014 Nicolas Chauvet <kwizart@gmail.com> - 0.9.6-4
 - Rebuilt for rfbz#3209
 
