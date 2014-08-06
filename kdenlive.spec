@@ -1,7 +1,7 @@
 
 Name:           kdenlive
 Version:        0.9.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
 URL:            http://www.kdenlive.org
@@ -61,19 +61,21 @@ desktop-file-validate %{buildroot}%{_kde4_datadir}/applications/kde4/%{name}.des
 %post
 touch --no-create %{_kde4_iconsdir}/hicolor &>/dev/null || :
 touch --no-create %{_kde4_iconsdir}/oxygen &>/dev/null || :
+touch --no-create %{_datadir}/mime/packages &> /dev/null || :
 
 %postun
 if [ $1 -eq 0 ] ; then
   touch --no-create %{_kde4_datadir}/icons/hicolor &>/dev/null
   gtk-update-icon-cache %{_kde4_datadir}/icons/hicolor &>/dev/null || :
-  update-mime-database %{_datadir}/mime &> /dev/null || :
+  touch --no-create %{_datadir}/mime/packages &> /dev/null || :
+  update-mime-database %{?fedora:-n} %{_datadir}/mime &> /dev/null || :
   update-desktop-database &> /dev/null || :
 fi
 
 %posttrans
 gtk-update-icon-cache %{_kde4_datadir}/icons/hicolor &>/dev/null || :
-update-mime-database %{_datadir}/mime &> /dev/null || :
 update-desktop-database &> /dev/null || :
+update-mime-database %{?fedora:-n} %{_datadir}/mime &> /dev/null || :
 
 
 %files -f %{name}.lang
@@ -95,6 +97,9 @@ update-desktop-database &> /dev/null || :
 
 
 %changelog
+* Wed Aug 06 2014 Rex Dieter <rdieter@fedoraproject.org> 0.9.8-2
+- optimize mime scriptlets
+
 * Wed May 14 2014 Rex Dieter <rdieter@fedoraproject.org> 0.9.8-1
 - 0.9.8
 
