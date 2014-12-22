@@ -1,7 +1,7 @@
 
 Name:           kdenlive
-Version:        0.9.8
-Release:        2%{?dist}
+Version:        0.9.10
+Release:        1%{?dist}
 Summary:        Non-linear video editor
 License:        GPLv2+
 URL:            http://www.kdenlive.org
@@ -34,9 +34,6 @@ recent video technologies.
 # MLT's binary melt renamed at Fedora, so we must rename it in Kdenlive, too
 sed -i 's|/bin/melt|/bin/mlt-melt|' src/mainwindow.cpp
 sed -i 's|findExe("melt")|findExe("mlt-melt")|' src/mainwindow.cpp
-
-# make palletable for %%doc later
-cp -a effects/README README.effects
 
 
 %build
@@ -79,7 +76,7 @@ update-mime-database %{?fedora:-n} %{_datadir}/mime &> /dev/null || :
 
 
 %files -f %{name}.lang
-%doc AUTHORS COPYING README*
+%doc AUTHORS COPYING README
 %{_kde4_bindir}/*
 %{_kde4_datadir}/applications/kde4/%{name}.desktop
 %{_kde4_libdir}/kde4/*.so
@@ -97,6 +94,9 @@ update-mime-database %{?fedora:-n} %{_datadir}/mime &> /dev/null || :
 
 
 %changelog
+* Mon Dec 22 2014 Rex Dieter <rdieter@fedoraproject.org> 0.9.10-1
+- 0.9.10
+
 * Wed Aug 06 2014 Rex Dieter <rdieter@fedoraproject.org> 0.9.8-2
 - optimize mime scriptlets
 
