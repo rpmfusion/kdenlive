@@ -39,8 +39,8 @@ BuildRequires: kf5-kxmlgui-devel
 BuildRequires: libappstream-glib
 
 BuildRequires: pkgconfig(libv4l2)
-BuildRequires: pkgconfig(mlt++) >= 0.9.8
-%global mlt_version %(pkg-config --modversion mlt++ 2>/dev/null || echo 0.9.8)
+BuildRequires: pkgconfig(mlt++) >= 6.0
+%global mlt_version %(pkg-config --modversion mlt++ 2>/dev/null || echo 6.0
 
 BuildRequires: pkgconfig(Qt5Concurrent)
 BuildRequires: pkgconfig(Qt5DBus)
