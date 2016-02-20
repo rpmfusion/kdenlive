@@ -31,6 +31,7 @@ BuildRequires: kf5-kiconthemes-devel
 BuildRequires: kf5-kitemviews-devel
 BuildRequires: kf5-kio-devel
 BuildRequires: kf5-kjobwidgets-devel
+BuildRequires: kf5-knewstuff-devel
 BuildRequires: kf5-knotifications-devel
 BuildRequires: kf5-knotifyconfig-devel
 BuildRequires: kf5-kplotting-devel
