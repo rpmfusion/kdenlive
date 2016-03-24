@@ -2,7 +2,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 15.12.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -52,6 +52,7 @@ BuildRequires: pkgconfig(Qt5Qml)
 BuildRequires: pkgconfig(Qt5Quick)
 BuildRequires: pkgconfig(Qt5Widgets)
 
+%{?kf5_kinit_requires}
 Requires: dvdauthor
 Requires: dvgrab
 Requires: ffmpeg
@@ -139,6 +140,9 @@ update-mime-database %{?fedora:-n} %{_datadir}/mime &> /dev/null || :
 
 
 %changelog
+* Thu Mar 24 2016 Sérgio Basto <sergio@serjux.com> - 15.12.2-2
+- Fix rfbz #4015
+
 * Wed Feb 17 2016 Rex Dieter <rdieter@fedoraproject.org> 15.12.2-1
 - 15.12.2
 
