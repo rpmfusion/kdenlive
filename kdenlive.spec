@@ -1,8 +1,8 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 15.12.2
-Release: 2%{?dist}
+Version: 16.04.2
+Release: 1%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -37,6 +37,9 @@ BuildRequires: kf5-knotifyconfig-devel
 BuildRequires: kf5-kplotting-devel
 BuildRequires: kf5-ktextwidgets-devel
 BuildRequires: kf5-kxmlgui-devel
+BuildRequires: kf5-kinit-devel
+BuildRequires: kf5-kcrash-devel
+BuildRequires: kf5-kfilemetadata-devel
 BuildRequires: libappstream-glib
 
 BuildRequires: pkgconfig(libv4l2)
@@ -51,6 +54,7 @@ BuildRequires: pkgconfig(Qt5Svg)
 BuildRequires: pkgconfig(Qt5Qml)
 BuildRequires: pkgconfig(Qt5Quick)
 BuildRequires: pkgconfig(Qt5Widgets)
+BuildRequires: pkgconfig(Qt5WebKitWidgets)
 
 %{?kf5_kinit_requires}
 Requires: dvdauthor
@@ -58,6 +62,7 @@ Requires: dvgrab
 Requires: ffmpeg
 Requires: mlt%{?_isa} >= %{mlt_version}
 Requires: recordmydesktop
+Requires: qt5-qtquickcontrols
 
 %description
 Kdenlive is an intuitive and powerful multi-track video editor, including most
@@ -71,7 +76,7 @@ recent video technologies.
 %build
 mkdir %{_target_platform}
 pushd %{_target_platform}
-%{cmake_kf5} ..
+%{cmake_kf5} -DBUILD_TESTING=OFF -DKDE_INSTALL_USE_QT_SYS_PATHS=ON  ..
 popd
 
 make %{?_smp_mflags} -C %{_target_platform}
@@ -140,6 +145,18 @@ update-mime-database %{?fedora:-n} %{_datadir}/mime &> /dev/null || :
 
 
 %changelog
+* Wed Jun 15 2016 Sérgio Basto <sergio@serjux.com> - 16.04.2-1
+- Update kdenlive to 16.04.2
+
+
+* Fri May 27 2016 David Vásquez <davidjeremias82 AT gmail DOT com> 16.04.1-2
+- Added missing dependencies
+- Disabled, build testing
+- Automatic qt system path
+
+* Fri May 13 2016 Sérgio Basto <sergio@serjux.com> - 16.04.1-1
+- Update to 16.04.1
+
 * Thu Mar 24 2016 Sérgio Basto <sergio@serjux.com> - 15.12.2-2
 - Fix rfbz #4015
 
