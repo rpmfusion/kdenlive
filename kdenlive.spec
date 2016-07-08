@@ -148,7 +148,6 @@ update-mime-database %{?fedora:-n} %{_datadir}/mime &> /dev/null || :
 * Wed Jun 15 2016 Sérgio Basto <sergio@serjux.com> - 16.04.2-1
 - Update kdenlive to 16.04.2
 
-
 * Fri May 27 2016 David Vásquez <davidjeremias82 AT gmail DOT com> 16.04.1-2
 - Added missing dependencies
 - Disabled, build testing
