@@ -2,7 +2,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 16.04.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -17,29 +17,28 @@ Source0: http://download.kde.org/%{stable}/applications/%{version}/src/kdenlive-
 BuildRequires: desktop-file-utils
 BuildRequires: extra-cmake-modules
 BuildRequires: gettext
-BuildRequires: kf5-rpm-macros
-BuildRequires: kf5-karchive-devel
-BuildRequires: kf5-kbookmarks-devel
-BuildRequires: kf5-kconfig-devel
-BuildRequires: kf5-kconfigwidgets-devel
-BuildRequires: kf5-kcoreaddons-devel
-BuildRequires: kf5-kdoctools-devel
-BuildRequires: kf5-kdbusaddons-devel
-BuildRequires: kf5-kguiaddons-devel
-BuildRequires: kf5-ki18n-devel
-BuildRequires: kf5-kiconthemes-devel
-BuildRequires: kf5-kitemviews-devel
-BuildRequires: kf5-kio-devel
-BuildRequires: kf5-kjobwidgets-devel
-BuildRequires: kf5-knewstuff-devel
-BuildRequires: kf5-knotifications-devel
-BuildRequires: kf5-knotifyconfig-devel
-BuildRequires: kf5-kplotting-devel
-BuildRequires: kf5-ktextwidgets-devel
-BuildRequires: kf5-kxmlgui-devel
-BuildRequires: kf5-kinit-devel
-BuildRequires: kf5-kcrash-devel
-BuildRequires: kf5-kfilemetadata-devel
+BuildRequires: cmake(KF5Archive)
+BuildRequires: cmake(KF5Bookmarks)
+BuildRequires: cmake(KF5Config)
+BuildRequires: cmake(KF5ConfigWidgets)
+BuildRequires: cmake(KF5CoreAddons)
+BuildRequires: cmake(KF5DocTools)
+BuildRequires: cmake(KF5DBusAddons)
+BuildRequires: cmake(KF5GuiAddons)
+BuildRequires: cmake(KF5I18n)
+BuildRequires: cmake(KF5IconThemes)
+BuildRequires: cmake(KF5ItemViews)
+BuildRequires: cmake(KF5KIO)
+BuildRequires: cmake(KF5JobWidgets)
+BuildRequires: cmake(KF5NewStuff)
+BuildRequires: cmake(KF5Notifications)
+BuildRequires: cmake(KF5NotifyConfig)
+BuildRequires: cmake(KF5Plotting)
+BuildRequires: cmake(KF5TextWidgets)
+BuildRequires: cmake(KF5XmlGui)
+BuildRequires: cmake(KF5Init)
+BuildRequires: cmake(KF5Crash)
+BuildRequires: cmake(KF5FileMetaData)
 BuildRequires: libappstream-glib
 
 BuildRequires: pkgconfig(libv4l2)
@@ -87,36 +86,35 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 ## unpackaged files
 # legacy/deprecated/unused bits
-rm -rfv %{buildroot}%{_datadir}/menu/
-rm -rfv %{buildroot}%{_datadir}/pixmaps/
+rm -rfv %{buildroot}%{_kf5_datadir}/menu/
+rm -rfv %{buildroot}%{_kf5_datadir}/pixmaps/
 
 # fix/rename appdata
-mv %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml \
-   %{buildroot}%{_datadir}/appdata/org.kde.%{name}.appdata.xml
+mv %{buildroot}%{_kf5_datadir}/appdata/%{name}.appdata.xml \
+   %{buildroot}%{_kf5_datadir}/appdata/org.kde.%{name}.appdata.xml
 
 
 %check
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/org.kde.%{name}.appdata.xml ||:
-desktop-file-validate %{buildroot}%{_datadir}/applications/org.kde.%{name}.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_kf5_datadir}/appdata/org.kde.%{name}.appdata.xml ||:
+desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.%{name}.desktop
 
 
 %post
-touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
-touch --no-create %{_datadir}/mime/packages &> /dev/null || :
+/usr/bin/update-desktop-database &> /dev/null || :
+/bin/touch --no-create %{_kf5_datadir}/icons/hicolor &> /dev/null || :
+/bin/touch --no-create %{_kf5_datadir}/mime/packages &> /dev/null || :
 
 %postun
 if [ $1 -eq 0 ] ; then
-  touch --no-create %{_datadir}/icons/hicolor &>/dev/null
-  gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
-  touch --no-create %{_datadir}/mime/packages &> /dev/null || :
-  update-mime-database %{?fedora:-n} %{_datadir}/mime &> /dev/null || :
-  update-desktop-database &> /dev/null || :
+  /bin/touch --no-create %{_kf5_datadir}/icons/hicolor &>/dev/null
+  /usr/bin/gtk-update-icon-cache %{_kf5_datadir}/icons/hicolor &>/dev/null || :
+  /usr/bin/update-mime-database %{_kf5_datadir}/mime &> /dev/null || :
+  /usr/bin/update-desktop-database &> /dev/null || :
 fi
 
 %posttrans
-gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
-update-desktop-database &> /dev/null || :
-update-mime-database %{?fedora:-n} %{_datadir}/mime &> /dev/null || :
+/usr/bin/gtk-update-icon-cache %{_kf5_datadir}/icons/hicolor &> /dev/null || :
+/usr/bin/update-mime-database %{?fedora:-n} %{_kf5_datadir}/mime &> /dev/null || :
 
 %files
 %doc AUTHORS README
@@ -124,27 +122,31 @@ update-mime-database %{?fedora:-n} %{_datadir}/mime &> /dev/null || :
 %{_kf5_docdir}/HTML/en/kdenlive/
 %{_kf5_bindir}/kdenlive_render
 %{_kf5_bindir}/%{name}
-%{_datadir}/applications/org.kde.%{name}.desktop
-%{_datadir}/appdata/org.kde.%{name}.appdata.xml
+%{_kf5_datadir}/applications/org.kde.%{name}.desktop
+%{_kf5_datadir}/appdata/org.kde.%{name}.appdata.xml
 %{_kf5_datadir}/kdenlive/
 %{_kf5_datadir}/mime/packages/kdenlive.xml
-%{_datadir}/mime/packages/westley.xml
-%{_datadir}/icons/hicolor/*/*/*
-%{_sysconfdir}/xdg/kdenlive_projectprofiles.knsrc
-%{_sysconfdir}/xdg/kdenlive_renderprofiles.knsrc
-%{_sysconfdir}/xdg/kdenlive_titles.knsrc
-%{_sysconfdir}/xdg/kdenlive_wipes.knsrc
+%{_kf5_datadir}/mime/packages/westley.xml
+%{_kf5_datadir}/icons/hicolor/*/*/*
+%{_kf5_datadir}/config.kcfg/kdenlivesettings.kcfg
+%{_kf5_datadir}/knotifications5/kdenlive.notifyrc
+%{_kf5_datadir}/kservices5/mltpreview.desktop
+%{_kf5_datadir}/kxmlgui5/kdenlive/
+%{_kf5_sysconfdir}/xdg/kdenlive_projectprofiles.knsrc
+%{_kf5_sysconfdir}/xdg/kdenlive_renderprofiles.knsrc
+%{_kf5_sysconfdir}/xdg/kdenlive_titles.knsrc
+%{_kf5_sysconfdir}/xdg/kdenlive_wipes.knsrc
 %{_kf5_qtplugindir}/mltpreview.so
-%{_datadir}/config.kcfg/kdenlivesettings.kcfg
-%{_datadir}/knotifications5/kdenlive.notifyrc
-%{_datadir}/kservices5/mltpreview.desktop
-%{_datadir}/kxmlgui5/kdenlive/
-%{_mandir}/man1/kdenlive.1*
-%{_mandir}/man1/kdenlive_render.1*
+%{_kf5_mandir}/man1/kdenlive.1*
+%{_kf5_mandir}/man1/kdenlive_render.1*
 
 
 
 %changelog
+* Fri Jul 08 2016 Leigh Scott <leigh123linux@googlemail.com> - 16.04.2-2
+- Use marcos for files
+- Fix scriptlets
+
 * Wed Jun 15 2016 Sérgio Basto <sergio@serjux.com> - 16.04.2-1
 - Update kdenlive to 16.04.2
 
