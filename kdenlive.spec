@@ -1,8 +1,8 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 16.04.2
-Release: 2%{?dist}
+Version: 16.04.3
+Release: 1%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -36,7 +36,6 @@ BuildRequires: cmake(KF5NotifyConfig)
 BuildRequires: cmake(KF5Plotting)
 BuildRequires: cmake(KF5TextWidgets)
 BuildRequires: cmake(KF5XmlGui)
-BuildRequires: cmake(KF5Init)
 BuildRequires: cmake(KF5Crash)
 BuildRequires: cmake(KF5FileMetaData)
 BuildRequires: libappstream-glib
@@ -55,6 +54,9 @@ BuildRequires: pkgconfig(Qt5Quick)
 BuildRequires: pkgconfig(Qt5Widgets)
 BuildRequires: pkgconfig(Qt5WebKitWidgets)
 
+## workaround for missing dependency in kf5-kio, can remove
+## once kf5-kio-5.24.0-2 (or newer is available)
+BuildRequires: kf5-kinit-devel
 %{?kf5_kinit_requires}
 Requires: dvdauthor
 Requires: dvgrab
@@ -108,6 +110,7 @@ desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.%{name}.d
 if [ $1 -eq 0 ] ; then
   /bin/touch --no-create %{_kf5_datadir}/icons/hicolor &>/dev/null
   /usr/bin/gtk-update-icon-cache %{_kf5_datadir}/icons/hicolor &>/dev/null || :
+  /bin/touch --no-create %{_kf5_datadir}/mime/packages &> /dev/null || :
   /usr/bin/update-mime-database %{_kf5_datadir}/mime &> /dev/null || :
   /usr/bin/update-desktop-database &> /dev/null || :
 fi
@@ -141,8 +144,10 @@ fi
 %{_kf5_mandir}/man1/kdenlive_render.1*
 
 
-
 %changelog
+* Thu Jul 28 2016 Rex Dieter <rdieter@fedoraproject.org> - 16.04.3-1
+- 16.04.3, add missing 'touch' to %%postun, document kinit workaround
+
 * Fri Jul 08 2016 Leigh Scott <leigh123linux@googlemail.com> - 16.04.2-2
 - Use marcos for files
 - Fix scriptlets
