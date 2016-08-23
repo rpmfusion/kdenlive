@@ -1,7 +1,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 16.04.3
+Version: 16.08.0
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -145,6 +145,9 @@ fi
 
 
 %changelog
+* Tue Aug 23 2016 Sérgio Basto <sergio@serjux.com> - 16.08.0-1
+- Kdenlive 16.08.0 is here
+
 * Thu Jul 28 2016 Rex Dieter <rdieter@fedoraproject.org> - 16.04.3-1
 - 16.04.3, add missing 'touch' to %%postun, document kinit workaround
 
