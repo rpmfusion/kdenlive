@@ -1,7 +1,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 16.08.0
+Version: 16.08.1
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -61,7 +61,11 @@ BuildRequires: kf5-kinit-devel
 Requires: dvdauthor
 Requires: dvgrab
 Requires: ffmpeg
+%if 0%{?fedora} > 24
+Requires: mlt-freeworld%{?_isa} >= %{mlt_version}
+%else
 Requires: mlt%{?_isa} >= %{mlt_version}
+%endif
 Requires: recordmydesktop
 Requires: qt5-qtquickcontrols
 
@@ -145,6 +149,10 @@ fi
 
 
 %changelog
+* Fri Sep 16 2016 Sérgio Basto <sergio@serjux.com> - 16.08.1-1
+- Update to 16.08.1
+- Requires mlt-freeworld on F25+
+
 * Tue Aug 23 2016 Sérgio Basto <sergio@serjux.com> - 16.08.0-1
 - Kdenlive 16.08.0 is here
 
