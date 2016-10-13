@@ -1,7 +1,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 16.08.1
+Version: 16.08.2
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -90,16 +90,6 @@ make %{?_smp_mflags} -C %{_target_platform}
 %install
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
-## unpackaged files
-# legacy/deprecated/unused bits
-rm -rfv %{buildroot}%{_kf5_datadir}/menu/
-rm -rfv %{buildroot}%{_kf5_datadir}/pixmaps/
-
-# fix/rename appdata
-mv %{buildroot}%{_kf5_datadir}/appdata/%{name}.appdata.xml \
-   %{buildroot}%{_kf5_datadir}/appdata/org.kde.%{name}.appdata.xml
-
-
 %check
 appstream-util validate-relax --nonet %{buildroot}%{_kf5_datadir}/appdata/org.kde.%{name}.appdata.xml ||:
 desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.%{name}.desktop
@@ -149,6 +139,10 @@ fi
 
 
 %changelog
+* Thu Oct 13 2016 Sérgio Basto <sergio@serjux.com> - 16.08.2-1
+- Update to 16.08.2
+- Scriplets fixed by upstream
+
 * Fri Sep 16 2016 Sérgio Basto <sergio@serjux.com> - 16.08.1-1
 - Update to 16.08.1
 - Requires mlt-freeworld on F25+
