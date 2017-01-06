@@ -1,7 +1,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 16.08.2
+Version: 16.12.0
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -139,6 +139,9 @@ fi
 
 
 %changelog
+* Fri Jan 06 2017 Leigh Scott <leigh123linux@googlemail.com> - 16.12.0-1
+- Update to 16.12.0
+
 * Thu Oct 13 2016 Sérgio Basto <sergio@serjux.com> - 16.08.2-1
 - Update to 16.08.2
 - Scriplets fixed by upstream
