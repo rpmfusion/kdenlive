@@ -1,7 +1,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 16.12.0
+Version: 16.12.2
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -139,6 +139,9 @@ fi
 
 
 %changelog
+* Tue Feb 21 2017 Sérgio Basto <sergio@serjux.com> - 16.12.2-1
+- Update kdenlive to 16.12.2 following Fedora KDE applications
+
 * Tue Jan 31 2017 Sérgio Basto <sergio@serjux.com> - 16.08.3-2
 - Requires mlt-freeworld on el7
 
