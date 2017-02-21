@@ -61,7 +61,7 @@ BuildRequires: kf5-kinit-devel
 Requires: dvdauthor
 Requires: dvgrab
 Requires: ffmpeg
-%if 0%{?fedora} > 24
+%if 0%{?fedora} >= 25 || 0%{?rhel} >= 7
 Requires: mlt-freeworld%{?_isa} >= %{mlt_version}
 %else
 Requires: mlt%{?_isa} >= %{mlt_version}
@@ -139,6 +139,12 @@ fi
 
 
 %changelog
+* Tue Jan 31 2017 Sérgio Basto <sergio@serjux.com> - 16.08.3-2
+- Requires mlt-freeworld on el7
+
+* Tue Jan 31 2017 Sérgio Basto <sergio@serjux.com> - 16.08.3-1
+- Update kdenlive to 16.08.3 like kde-baseapps
+
 * Fri Jan 06 2017 Leigh Scott <leigh123linux@googlemail.com> - 16.12.0-1
 - Update to 16.12.0
 
