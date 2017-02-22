@@ -2,7 +2,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 16.12.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -13,6 +13,7 @@ URL:     http://www.kdenlive.org
 %global stable stable
 %endif
 Source0: http://download.kde.org/%{stable}/applications/%{version}/src/kdenlive-%{version}.tar.xz
+Patch0:  gcc7.patch
 
 BuildRequires: desktop-file-utils
 BuildRequires: extra-cmake-modules
@@ -75,7 +76,7 @@ recent video technologies.
 
 
 %prep
-%setup -q
+%autosetup -p1
 
 
 %build
@@ -139,6 +140,9 @@ fi
 
 
 %changelog
+* Wed Feb 22 2017 Leigh Scott <leigh123linux@googlemail.com> - 16.12.2-2
+- Add build fix for gcc-7 changes
+
 * Tue Feb 21 2017 Sérgio Basto <sergio@serjux.com> - 16.12.2-1
 - Update kdenlive to 16.12.2 following Fedora KDE applications
 
