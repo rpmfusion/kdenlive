@@ -1,8 +1,8 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 16.12.2
-Release: 3%{?dist}
+Version: 16.12.3
+Release: 1%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -140,6 +140,9 @@ fi
 
 
 %changelog
+* Sat Apr 01 2017 Sérgio Basto <sergio@serjux.com> - 16.12.3-1
+- Update to 16.12.3
+
 * Sun Mar 19 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 16.12.2-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
