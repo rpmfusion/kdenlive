@@ -1,7 +1,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 16.12.3
+Version: 17.04.2
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -13,7 +13,6 @@ URL:     http://www.kdenlive.org
 %global stable stable
 %endif
 Source0: http://download.kde.org/%{stable}/applications/%{version}/src/kdenlive-%{version}.tar.xz
-Patch0:  gcc7.patch
 
 BuildRequires: desktop-file-utils
 BuildRequires: extra-cmake-modules
@@ -140,6 +139,9 @@ fi
 
 
 %changelog
+* Sun Jun 11 2017 Sérgio Basto <sergio@serjux.com> - 17.04.2-1
+- Update to 17.04.2
+
 * Sat Apr 01 2017 Sérgio Basto <sergio@serjux.com> - 16.12.3-1
 - Update to 16.12.3
 
