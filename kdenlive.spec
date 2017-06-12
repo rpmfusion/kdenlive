@@ -2,7 +2,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 17.04.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -13,6 +13,7 @@ URL:     http://www.kdenlive.org
 %global stable stable
 %endif
 Source0: http://download.kde.org/%{stable}/applications/%{version}/src/kdenlive-%{version}.tar.xz
+Patch0:  gcc7.patch
 
 BuildRequires: desktop-file-utils
 BuildRequires: extra-cmake-modules
@@ -89,6 +90,7 @@ make %{?_smp_mflags} -C %{_target_platform}
 
 %install
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+%find_lang %{name} --with-html --all-name
 
 %check
 appstream-util validate-relax --nonet %{buildroot}%{_kf5_datadir}/appdata/org.kde.%{name}.appdata.xml ||:
@@ -113,10 +115,9 @@ fi
 /usr/bin/gtk-update-icon-cache %{_kf5_datadir}/icons/hicolor &> /dev/null || :
 /usr/bin/update-mime-database %{?fedora:-n} %{_kf5_datadir}/mime &> /dev/null || :
 
-%files
+%files -f %{name}.lang
 %doc AUTHORS README
 %license COPYING
-%{_kf5_docdir}/HTML/en/kdenlive/
 %{_kf5_bindir}/kdenlive_render
 %{_kf5_bindir}/%{name}
 %{_kf5_datadir}/applications/org.kde.%{name}.desktop
@@ -133,12 +134,17 @@ fi
 %{_kf5_sysconfdir}/xdg/kdenlive_renderprofiles.knsrc
 %{_kf5_sysconfdir}/xdg/kdenlive_titles.knsrc
 %{_kf5_sysconfdir}/xdg/kdenlive_wipes.knsrc
+%{_kf5_sysconfdir}/xdg/kdenlive.categories
 %{_kf5_qtplugindir}/mltpreview.so
 %{_kf5_mandir}/man1/kdenlive.1*
 %{_kf5_mandir}/man1/kdenlive_render.1*
 
 
 %changelog
+* Sun Jun 11 2017 Sérgio Basto <sergio@serjux.com> - 17.04.2-2
+- Add a new gcc7.patch
+- Add find_lang macro
+
 * Sun Jun 11 2017 Sérgio Basto <sergio@serjux.com> - 17.04.2-1
 - Update to 17.04.2
 
