@@ -2,7 +2,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 17.04.2
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -141,6 +141,9 @@ fi
 
 
 %changelog
+* Fri Jun 16 2017 Sérgio Basto <sergio@serjux.com> - 17.04.2-3
+- yet another fix for gcc7
+
 * Sun Jun 11 2017 Sérgio Basto <sergio@serjux.com> - 17.04.2-2
 - Add a new gcc7.patch
 - Add find_lang macro
