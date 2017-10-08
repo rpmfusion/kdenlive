@@ -1,8 +1,8 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 17.04.2
-Release: 4%{?dist}
+Version: 17.08.1
+Release: 1%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -141,6 +141,9 @@ fi
 
 
 %changelog
+* Sun Oct 08 2017 Sérgio Basto <sergio@serjux.com> - 17.08.1-1
+- Update to 17.08.1
+
 * Thu Aug 31 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 17.04.2-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
