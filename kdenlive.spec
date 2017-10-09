@@ -13,7 +13,6 @@ URL:     http://www.kdenlive.org
 %global stable stable
 %endif
 Source0: http://download.kde.org/%{stable}/applications/%{version}/src/kdenlive-%{version}.tar.xz
-Patch0:  gcc7.patch
 
 BuildRequires: desktop-file-utils
 BuildRequires: extra-cmake-modules
