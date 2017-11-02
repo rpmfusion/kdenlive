@@ -1,7 +1,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 17.08.1
+Version: 17.08.2
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -139,6 +139,9 @@ fi
 
 
 %changelog
+* Thu Nov 02 2017 Sérgio Basto <sergio@serjux.com> - 17.08.2-1
+- Update kdenlive to 17.08.2
+
 * Sun Oct 08 2017 Sérgio Basto <sergio@serjux.com> - 17.08.1-1
 - Update to 17.08.1
 
