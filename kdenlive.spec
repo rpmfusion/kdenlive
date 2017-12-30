@@ -92,7 +92,7 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %find_lang %{name} --with-html --all-name
 
 %check
-appstream-util validate-relax --nonet %{buildroot}%{_kf5_datadir}/appdata/org.kde.%{name}.appdata.xml ||:
+appstream-util validate-relax --nonet %{buildroot}%{_kf5_datadir}/metainfo/org.kde.%{name}.appdata.xml ||:
 desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.%{name}.desktop
 
 
@@ -120,7 +120,7 @@ fi
 %{_kf5_bindir}/kdenlive_render
 %{_kf5_bindir}/%{name}
 %{_kf5_datadir}/applications/org.kde.%{name}.desktop
-%{_kf5_datadir}/appdata/org.kde.%{name}.appdata.xml
+%{_kf5_datadir}/metainfo/org.kde.%{name}.appdata.xml
 %{_kf5_datadir}/kdenlive/
 %{_kf5_datadir}/mime/packages/kdenlive.xml
 %{_kf5_datadir}/mime/packages/westley.xml
