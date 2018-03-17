@@ -66,7 +66,6 @@ Requires: mlt-freeworld%{?_isa} >= %{mlt_version}
 %else
 Requires: mlt%{?_isa} >= %{mlt_version}
 %endif
-Requires: recordmydesktop
 Requires: qt5-qtquickcontrols
 
 %description
@@ -139,6 +138,9 @@ fi
 
 
 %changelog
+* Sat Mar 17 2018 René Genz <liebundartig@freenet.de> - 17.12.3-2
+- remove requirement for recordmydesktop
+
 * Sun Mar 11 2018 Sérgio Basto <sergio@serjux.com> - 17.12.3-1
 - Update kdenlive to 17.12.3
 
