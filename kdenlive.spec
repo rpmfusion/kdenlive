@@ -2,7 +2,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 17.12.3
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -13,6 +13,16 @@ URL:     http://www.kdenlive.org
 %global stable stable
 %endif
 Source0: http://download.kde.org/%{stable}/applications/%{version}/src/kdenlive-%{version}.tar.xz
+Source100: kdenlive-find-lang.sh
+
+# Add support for finding html files with find-lang.sh --with-html on epel
+# https://github.com/rpm-software-management/rpm/commit/0c42871ff407a3eeb1e8b8c1de9395f35659c987
+%if 0%{?rhel}
+# copied from openshot
+# Redirect find_lang to our patched version
+%global find_lang %{_sourcedir}/kdenlive-find-lang.sh %{buildroot}
+%endif
+
 
 BuildRequires: desktop-file-utils
 BuildRequires: extra-cmake-modules
@@ -139,6 +149,9 @@ fi
 
 
 %changelog
+* Mon Mar 19 2018 Sérgio Basto <sergio@serjux.com> - 17.12.3-2
+- Add a fix to build in el7
+
 * Sun Mar 11 2018 Sérgio Basto <sergio@serjux.com> - 17.12.3-1
 - Update kdenlive to 17.12.3
 
