@@ -2,7 +2,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 17.12.3
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -76,7 +76,6 @@ Requires: mlt-freeworld%{?_isa} >= %{mlt_version}
 %else
 Requires: mlt%{?_isa} >= %{mlt_version}
 %endif
-Requires: recordmydesktop
 Requires: qt5-qtquickcontrols
 
 %description
@@ -149,6 +148,9 @@ fi
 
 
 %changelog
+* Wed Mar 21 2018 Sérgio Basto <sergio@serjux.com> - 17.12.3-3
+- recordmydesktop is not used since 0.9.something
+
 * Mon Mar 19 2018 Sérgio Basto <sergio@serjux.com> - 17.12.3-2
 - Add a fix to build in el7
 
