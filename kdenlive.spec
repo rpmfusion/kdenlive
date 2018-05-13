@@ -2,7 +2,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 17.12.3
-Release: 3%{?dist}
+Release: 4%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -148,6 +148,9 @@ fi
 
 
 %changelog
+* Sun May 13 2018 Rex Dieter <rdieter@fedoraproject.org> - 17.12.3-4
+- rebuild (mlt)
+
 * Wed Mar 21 2018 Sérgio Basto <sergio@serjux.com> - 17.12.3-3
 - recordmydesktop is not used since 0.9.something
 
