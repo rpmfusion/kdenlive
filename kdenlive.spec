@@ -1,8 +1,8 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 17.12.3
-Release: 4%{?dist}
+Version: 18.04.1
+Release: 1%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -22,7 +22,6 @@ Source100: kdenlive-find-lang.sh
 # Redirect find_lang to our patched version
 %global find_lang %{_sourcedir}/kdenlive-find-lang.sh %{buildroot}
 %endif
-
 
 BuildRequires: desktop-file-utils
 BuildRequires: extra-cmake-modules
@@ -51,8 +50,8 @@ BuildRequires: cmake(KF5FileMetaData)
 BuildRequires: libappstream-glib
 
 BuildRequires: pkgconfig(libv4l2)
-BuildRequires: pkgconfig(mlt++) >= 6.0
-%global mlt_version %(pkg-config --modversion mlt++ 2>/dev/null || echo 6.0)
+BuildRequires: pkgconfig(mlt++) >= 6.6.0
+%global mlt_version %(pkg-config --modversion mlt++ 2>/dev/null || echo 6.6.0)
 
 BuildRequires: pkgconfig(Qt5Concurrent)
 BuildRequires: pkgconfig(Qt5DBus)
@@ -90,21 +89,25 @@ recent video technologies.
 %build
 mkdir %{_target_platform}
 pushd %{_target_platform}
-%{cmake_kf5} -DBUILD_TESTING=OFF -DKDE_INSTALL_USE_QT_SYS_PATHS=ON  ..
+%{cmake_kf5} .. \
+  -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 popd
 
-make %{?_smp_mflags} -C %{_target_platform}
+%make_build -C %{_target_platform}
 
 
 %install
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+
 %find_lang %{name} --with-html --all-name
+
 
 %check
 appstream-util validate-relax --nonet %{buildroot}%{_kf5_metainfodir}/org.kde.%{name}.appdata.xml ||:
 desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.%{name}.desktop
 
 
+%if 0%{?rhel}
 %post
 /usr/bin/update-desktop-database &> /dev/null || :
 /bin/touch --no-create %{_kf5_datadir}/icons/hicolor &> /dev/null || :
@@ -122,6 +125,7 @@ fi
 %posttrans
 /usr/bin/gtk-update-icon-cache %{_kf5_datadir}/icons/hicolor &> /dev/null || :
 /usr/bin/update-mime-database %{?fedora:-n} %{_kf5_datadir}/mime &> /dev/null || :
+%endif
 
 %files -f %{name}.lang
 %doc AUTHORS README
@@ -148,6 +152,11 @@ fi
 
 
 %changelog
+* Sun May 13 2018 Rex Dieter <rdieter@fedoraproject.org> - 18.04.1-1
+- 18.04.1
+- .spec cosmetics
+- omit scriptlets on fedora (all handled via system triggers now)
+
 * Sun May 13 2018 Rex Dieter <rdieter@fedoraproject.org> - 17.12.3-4
 - rebuild (mlt)
 
