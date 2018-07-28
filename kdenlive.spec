@@ -135,7 +135,7 @@ fi
 %{_kf5_datadir}/applications/org.kde.%{name}.desktop
 %{_kf5_metainfodir}/org.kde.%{name}.appdata.xml
 %{_kf5_datadir}/kdenlive/
-%{_kf5_datadir}/mime/packages/kdenlive.xml
+%{_kf5_datadir}/mime/packages/org.kde.kdenlive.xml
 %{_kf5_datadir}/mime/packages/westley.xml
 %{_kf5_datadir}/icons/hicolor/*/*/*
 %{_kf5_datadir}/config.kcfg/kdenlivesettings.kcfg
