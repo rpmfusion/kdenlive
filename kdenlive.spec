@@ -1,8 +1,8 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 18.04.3
-Release: 2%{?dist}
+Version: 18.08.1
+Release: 1%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -152,6 +152,9 @@ fi
 
 
 %changelog
+* Mon Sep 17 2018 Sérgio Basto <sergio@serjux.com> - 18.08.1-1
+- Update kdenlive to 18.08.1
+
 * Sun Aug 19 2018 Leigh Scott <leigh123linux@googlemail.com> - 18.04.3-2
 - Rebuilt for Fedora 29 Mass Rebuild binutils issue
 
