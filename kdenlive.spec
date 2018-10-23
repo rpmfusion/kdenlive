@@ -1,7 +1,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 18.08.1
+Version: 18.08.2
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -43,6 +43,7 @@ BuildRequires: cmake(KF5NewStuff)
 BuildRequires: cmake(KF5Notifications)
 BuildRequires: cmake(KF5NotifyConfig)
 BuildRequires: cmake(KF5Plotting)
+BuildRequires: cmake(KF5Purpose)
 BuildRequires: cmake(KF5TextWidgets)
 BuildRequires: cmake(KF5XmlGui)
 BuildRequires: cmake(KF5Crash)
@@ -152,6 +153,9 @@ fi
 
 
 %changelog
+* Tue Oct 23 2018 Leigh Scott <leigh123linux@googlemail.com> - 18.08.2-1
+- Update kdenlive to 18.08.2
+
 * Mon Sep 17 2018 Sérgio Basto <sergio@serjux.com> - 18.08.1-1
 - Update kdenlive to 18.08.1
 
