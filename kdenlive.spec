@@ -1,7 +1,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 18.08.2
+Version: 18.12.2
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -100,6 +100,9 @@ popd
 %install
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
+## unpackaged files
+rm -rfv  %{buildroot}%{_datadir}/doc/Kdenlive/
+
 %find_lang %{name} --with-html --all-name
 
 
@@ -108,7 +111,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_kf5_metainfodir}/org.kde.%{
 desktop-file-validate %{buildroot}%{_kf5_datadir}/applications/org.kde.%{name}.desktop
 
 
-%if 0%{?rhel}
+%if 0%{?rhel} && 0%{?rhel} < 8
 %post
 /usr/bin/update-desktop-database &> /dev/null || :
 /bin/touch --no-create %{_kf5_datadir}/icons/hicolor &> /dev/null || :
@@ -147,12 +150,16 @@ fi
 %{_kf5_sysconfdir}/xdg/kdenlive_titles.knsrc
 %{_kf5_sysconfdir}/xdg/kdenlive_wipes.knsrc
 %{_kf5_sysconfdir}/xdg/kdenlive.categories
-%{_kf5_qtplugindir}/mltpreview.so
 %{_kf5_mandir}/man1/kdenlive.1*
 %{_kf5_mandir}/man1/kdenlive_render.1*
+# consider subpkg for multilib
+%{_kf5_qtplugindir}/mltpreview.so
 
 
 %changelog
+* Thu Feb 28 2019 Rex Dieter <rdieter@fedoraproject.org> - 18.12.2-1
+- 18.12.2
+
 * Tue Oct 23 2018 Leigh Scott <leigh123linux@googlemail.com> - 18.08.2-1
 - Update kdenlive to 18.08.2
 
