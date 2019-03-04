@@ -2,7 +2,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 18.12.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -157,6 +157,9 @@ fi
 
 
 %changelog
+* Mon Mar 04 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 18.12.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Thu Feb 28 2019 Rex Dieter <rdieter@fedoraproject.org> - 18.12.2-1
 - 18.12.2
 
