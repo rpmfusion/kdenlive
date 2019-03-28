@@ -1,8 +1,8 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 18.12.2
-Release: 2%{?dist}
+Version: 18.12.3
+Release: 1%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -14,6 +14,9 @@ URL:     http://www.kdenlive.org
 %endif
 Source0: http://download.kde.org/%{stable}/applications/%{version}/src/kdenlive-%{version}.tar.xz
 Source100: kdenlive-find-lang.sh
+
+## backport from master branch
+Patch100: kdenlive-18.12.3-mlt_melt.patch
 
 # Add support for finding html files with find-lang.sh --with-html on epel
 # https://github.com/rpm-software-management/rpm/commit/0c42871ff407a3eeb1e8b8c1de9395f35659c987
@@ -157,6 +160,10 @@ fi
 
 
 %changelog
+* Thu Mar 28 2019 Rex Dieter <rdieter@fedoraproject.org> - 18.12.3-1
+- 18.12.3
+- backport upstream fix for mlt-melt (kde#405564)
+
 * Mon Mar 04 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 18.12.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 

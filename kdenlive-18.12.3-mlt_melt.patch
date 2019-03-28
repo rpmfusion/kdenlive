@@ -1,0 +1,13 @@
+diff -up kdenlive-18.12.3/src/mltconnection.cpp.mlt kdenlive-18.12.3/src/mltconnection.cpp
+--- kdenlive-18.12.3/src/mltconnection.cpp.mlt	2019-02-27 19:43:02.000000000 -0600
++++ kdenlive-18.12.3/src/mltconnection.cpp	2019-03-28 16:26:00.482603257 -0500
+@@ -74,6 +74,9 @@ void MltConnection::locateMeltAndProfile
+     }
+     if (!QFile::exists(meltPath)) {
+         meltPath = QStandardPaths::findExecutable("melt");
++        if (meltPath.isEmpty()) {
++            meltPath = QStandardPaths::findExecutable("mlt-melt");
++        }
+     }
+     KdenliveSettings::setRendererpath(meltPath);
+ 
