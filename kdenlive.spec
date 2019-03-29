@@ -2,7 +2,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 18.12.3
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -160,6 +160,9 @@ fi
 
 
 %changelog
+* Fri Mar 29 2019 Rex Dieter <rdieter@fedoraproject.org> - 18.12.3-3
+- respin melt.patch for real this time
+
 * Fri Mar 29 2019 Rex Dieter <rdieter@fedoraproject.org> - 18.12.3-2
 - respin melt patch to give mlt-melt priority over melt
 
