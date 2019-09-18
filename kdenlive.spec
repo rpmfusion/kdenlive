@@ -1,8 +1,8 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 18.12.3
-Release: 4%{?dist}
+Version: 19.04.3
+Release: 1%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -160,6 +160,9 @@ fi
 
 
 %changelog
+* Wed Sep 18 2019 Sérgio Basto <sergio@serjux.com> - 19.04.3-1
+- Update kdenlive to 19.04.3
+
 * Sun May 12 2019 Leigh Scott <leigh123linux@gmail.com> - 18.12.3-4
 - Rebuild for new mlt version
 
