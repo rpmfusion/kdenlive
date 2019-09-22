@@ -13,7 +13,9 @@ URL:     http://www.kdenlive.org
 %global stable stable
 %endif
 Source0: http://download.kde.org/%{stable}/applications/%{version}/src/kdenlive-%{version}.tar.xz
+Source1: https://github.com/rttrorg/rttr/archive/v0.9.6/rttr-0.9.6.tar.gz
 Source100: kdenlive-find-lang.sh
+Patch0: rttr.CMakeLists.patch
 
 # Add support for finding html files with find-lang.sh --with-html on epel
 # https://github.com/rpm-software-management/rpm/commit/0c42871ff407a3eeb1e8b8c1de9395f35659c987
@@ -63,6 +65,8 @@ BuildRequires: pkgconfig(Qt5Qml)
 BuildRequires: pkgconfig(Qt5Quick)
 BuildRequires: pkgconfig(Qt5Widgets)
 BuildRequires: pkgconfig(Qt5WebKitWidgets)
+BuildRequires: cmake(KF5Declarative)
+BuildRequires: cmake(Qt5Multimedia)
 
 ## workaround for missing dependency in kf5-kio, can remove
 ## once kf5-kio-5.24.0-2 (or newer is available)
@@ -84,12 +88,14 @@ recent video technologies.
 
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a1
 
 
 %build
 mkdir %{_target_platform}
 pushd %{_target_platform}
+mv ../rttr-0.9.6/ rttr/
+
 %{cmake_kf5} .. \
   -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 popd
@@ -132,7 +138,7 @@ fi
 %endif
 
 %files -f %{name}.lang
-%doc AUTHORS README
+%doc AUTHORS README.md
 %license COPYING
 %{_kf5_bindir}/kdenlive_render
 %{_kf5_bindir}/%{name}
@@ -146,6 +152,7 @@ fi
 %{_kf5_datadir}/knotifications5/kdenlive.notifyrc
 %{_kf5_datadir}/kservices5/mltpreview.desktop
 %{_kf5_datadir}/kxmlgui5/kdenlive/
+%{_kf5_sysconfdir}/xdg/kdenlive_keyboardschemes.knsrc
 %{_kf5_sysconfdir}/xdg/kdenlive_renderprofiles.knsrc
 %{_kf5_sysconfdir}/xdg/kdenlive_titles.knsrc
 %{_kf5_sysconfdir}/xdg/kdenlive_wipes.knsrc
