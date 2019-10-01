@@ -2,7 +2,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 19.04.3
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -81,6 +81,9 @@ Requires: mlt-freeworld%{?_isa} >= %{mlt_version}
 Requires: mlt%{?_isa} >= %{mlt_version}
 %endif
 Requires: qt5-qtquickcontrols
+# Someone that gives a damn should check to see if
+# qt5-qtquickcontrols is still required
+Requires: qt5-qtquickcontrols2
 
 %description
 Kdenlive is an intuitive and powerful multi-track video editor, including most
@@ -164,6 +167,9 @@ fi
 
 
 %changelog
+* Tue Oct 01 2019 Leigh Scott <leigh123linux@googlemail.com> - 19.04.3-2
+- Add requires qt5-qtquickcontrols2 (rfbz#5401)
+
 * Wed Sep 18 2019 Sérgio Basto <sergio@serjux.com> - 19.04.3-1
 - Update kdenlive to 19.04.3
 
