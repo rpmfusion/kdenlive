@@ -13,6 +13,10 @@ URL:     http://www.kdenlive.org
 %global stable stable
 %endif
 Source0: http://download.kde.org/%{stable}/applications/%{version}/src/kdenlive-%{version}.tar.xz
+# With 19.04.3 it seems we can't build kdenlive without rttr [3] so it download and add rttr to kdenlive,
+# by patching rttr.CMakeLists.txt with rttr.CMakeLists.patch more mv ../rttr-0.9.6/ rttr/
+#[3] #https://invent.kde.org/kde/kdenlive/blob/master/rttr.CMakeLists.txt
+# https://invent.kde.org/thompsony/kdenlive/commit/2001ceb968f6064efabcd794977db5ef30fe6127
 Source1: https://github.com/rttrorg/rttr/archive/v0.9.6/rttr-0.9.6.tar.gz
 Source100: kdenlive-find-lang.sh
 Patch0: rttr.CMakeLists.patch
