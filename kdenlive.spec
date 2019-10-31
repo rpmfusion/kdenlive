@@ -1,8 +1,8 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 19.04.3
-Release: 2%{?dist}
+Version: 19.08.2
+Release: 1%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -171,6 +171,9 @@ fi
 
 
 %changelog
+* Thu Oct 31 2019 Sérgio Basto <sergio@serjux.com> - 19.08.2-1
+- Update kdenlive to 19.08.2
+
 * Tue Oct 01 2019 Leigh Scott <leigh123linux@googlemail.com> - 19.04.3-2
 - Add requires qt5-qtquickcontrols2 (rfbz#5401)
 
