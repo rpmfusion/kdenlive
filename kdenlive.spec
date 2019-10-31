@@ -163,7 +163,7 @@ fi
 %{_kf5_sysconfdir}/xdg/kdenlive_renderprofiles.knsrc
 %{_kf5_sysconfdir}/xdg/kdenlive_titles.knsrc
 %{_kf5_sysconfdir}/xdg/kdenlive_wipes.knsrc
-%{_kf5_sysconfdir}/xdg/kdenlive.categories
+%{_kf5_datadir}/qlogging-categories5/kdenlive.categories
 %{_kf5_mandir}/man1/kdenlive.1*
 %{_kf5_mandir}/man1/kdenlive_render.1*
 # consider subpkg for multilib
