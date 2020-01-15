@@ -1,7 +1,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 19.08.2
+Version: 19.12.1
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -12,7 +12,7 @@ URL:     http://www.kdenlive.org
 %else
 %global stable stable
 %endif
-Source0: http://download.kde.org/%{stable}/applications/%{version}/src/kdenlive-%{version}.tar.xz
+Source0: https://github.com/KDE/kdenlive/archive/v%{version}/%{name}-%{version}.tar.gz
 # With 19.04.3 it seems we can't build kdenlive without rttr [3] so it download and add rttr to kdenlive,
 # by patching rttr.CMakeLists.txt with rttr.CMakeLists.patch more mv ../rttr-0.9.6/ rttr/
 #[3] #https://invent.kde.org/kde/kdenlive/blob/master/rttr.CMakeLists.txt
@@ -23,7 +23,7 @@ Patch0: rttr.CMakeLists.patch
 
 # Add support for finding html files with find-lang.sh --with-html on epel
 # https://github.com/rpm-software-management/rpm/commit/0c42871ff407a3eeb1e8b8c1de9395f35659c987
-%if 0%{?rhel}
+%if 0%{?rhel} && 0%{?rhel} <= 7
 # copied from openshot
 # Redirect find_lang to our patched version
 %global find_lang %{_sourcedir}/kdenlive-find-lang.sh %{buildroot}
@@ -171,6 +171,9 @@ fi
 
 
 %changelog
+* Tue Jan 14 2020 Sérgio Basto <sergio@serjux.com> - 19.12.1-1
+- Update kdenlive to 19.12.1
+
 * Thu Oct 31 2019 Sérgio Basto <sergio@serjux.com> - 19.08.2-1
 - Update kdenlive to 19.08.2
 
