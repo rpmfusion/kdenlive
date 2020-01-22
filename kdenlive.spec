@@ -2,7 +2,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 19.12.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -12,7 +12,7 @@ URL:     http://www.kdenlive.org
 %else
 %global stable stable
 %endif
-Source0: https://github.com/KDE/kdenlive/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0: https://download.kde.org/%{stable}/release-service/%{version}/src/kdenlive-%{version}.tar.xz
 # With 19.04.3 it seems we can't build kdenlive without rttr [3] so it download and add rttr to kdenlive,
 # by patching rttr.CMakeLists.txt with rttr.CMakeLists.patch more mv ../rttr-0.9.6/ rttr/
 #[3] #https://invent.kde.org/kde/kdenlive/blob/master/rttr.CMakeLists.txt
@@ -171,6 +171,9 @@ fi
 
 
 %changelog
+* Wed Jan 22 2020 Sérgio Basto <sergio@serjux.com> - 19.12.1-2
+- Use released sources that have po files
+
 * Tue Jan 14 2020 Sérgio Basto <sergio@serjux.com> - 19.12.1-1
 - Update kdenlive to 19.12.1
 
