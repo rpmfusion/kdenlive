@@ -1,7 +1,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 19.12.3
+Version: 20.04.1
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -69,6 +69,7 @@ BuildRequires: pkgconfig(Qt5Qml)
 BuildRequires: pkgconfig(Qt5Quick)
 BuildRequires: pkgconfig(Qt5Widgets)
 BuildRequires: pkgconfig(Qt5WebKitWidgets)
+BuildRequires: pkgconfig(Qt5QuickControls2)
 BuildRequires: cmake(KF5Declarative)
 BuildRequires: cmake(Qt5Multimedia)
 
@@ -84,9 +85,6 @@ Requires: mlt-freeworld%{?_isa} >= %{mlt_version}
 %else
 Requires: mlt%{?_isa} >= %{mlt_version}
 %endif
-Requires: qt5-qtquickcontrols
-# Someone that gives a damn should check to see if
-# qt5-qtquickcontrols is still required
 Requires: qt5-qtquickcontrols2
 
 %description
@@ -171,6 +169,9 @@ fi
 
 
 %changelog
+* Mon May 18 2020 Sérgio Basto <sergio@serjux.com> - 20.04.1-1
+- Update kdenlive to 20.04.1
+
 * Thu Mar 26 2020 Sérgio Basto <sergio@serjux.com> - 19.12.3-1
 - Update kdenlive to 19.12.3
 
