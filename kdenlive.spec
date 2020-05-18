@@ -2,7 +2,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 20.04.1
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -37,6 +37,7 @@ BuildRequires: cmake(KF5Bookmarks)
 BuildRequires: cmake(KF5Config)
 BuildRequires: cmake(KF5ConfigWidgets)
 BuildRequires: cmake(KF5CoreAddons)
+BuildRequires: cmake(KF5Declarative)
 BuildRequires: cmake(KF5DocTools)
 BuildRequires: cmake(KF5DBusAddons)
 BuildRequires: cmake(KF5GuiAddons)
@@ -62,16 +63,15 @@ BuildRequires: pkgconfig(mlt++) >= 6.6.0
 
 BuildRequires: pkgconfig(Qt5Concurrent)
 BuildRequires: pkgconfig(Qt5DBus)
+BuildRequires: cmake(Qt5Multimedia)
 BuildRequires: pkgconfig(Qt5OpenGL)
-BuildRequires: pkgconfig(Qt5Script)
-BuildRequires: pkgconfig(Qt5Svg)
 BuildRequires: pkgconfig(Qt5Qml)
 BuildRequires: pkgconfig(Qt5Quick)
-BuildRequires: pkgconfig(Qt5Widgets)
-BuildRequires: pkgconfig(Qt5WebKitWidgets)
 BuildRequires: pkgconfig(Qt5QuickControls2)
-BuildRequires: cmake(KF5Declarative)
-BuildRequires: cmake(Qt5Multimedia)
+BuildRequires: pkgconfig(Qt5Script)
+BuildRequires: pkgconfig(Qt5Svg)
+BuildRequires: pkgconfig(Qt5WebKitWidgets)
+BuildRequires: pkgconfig(Qt5Widgets)
 
 ## workaround for missing dependency in kf5-kio, can remove
 ## once kf5-kio-5.24.0-2 (or newer is available)
@@ -86,6 +86,7 @@ Requires: mlt-freeworld%{?_isa} >= %{mlt_version}
 Requires: mlt%{?_isa} >= %{mlt_version}
 %endif
 Requires: qt5-qtquickcontrols2
+Requires: frei0r-plugins
 
 %description
 Kdenlive is an intuitive and powerful multi-track video editor, including most
@@ -169,6 +170,10 @@ fi
 
 
 %changelog
+* Mon May 18 2020 Sérgio Basto <sergio@serjux.com> - 20.04.1-3
+- Add requires frei0r-plugins
+- Sort requires alphabetically
+
 * Mon May 18 2020 Sérgio Basto <sergio@serjux.com> - 20.04.1-2
 - Add -Wno-dev
 
