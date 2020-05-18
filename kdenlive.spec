@@ -2,7 +2,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 20.04.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -102,7 +102,7 @@ pushd %{_target_platform}
 mv ../rttr-0.9.6/ rttr/
 
 %{cmake_kf5} .. \
-  -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+  -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON -Wno-dev
 popd
 
 %make_build -C %{_target_platform}
@@ -169,6 +169,9 @@ fi
 
 
 %changelog
+* Mon May 18 2020 Sérgio Basto <sergio@serjux.com> - 20.04.1-2
+- Add -Wno-dev
+
 * Mon May 18 2020 Sérgio Basto <sergio@serjux.com> - 20.04.1-1
 - Update kdenlive to 20.04.1
 
