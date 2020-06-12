@@ -1,8 +1,8 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 20.04.1
-Release: 3%{?dist}
+Version: 20.04.2
+Release: 1%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -170,6 +170,9 @@ fi
 
 
 %changelog
+* Fri Jun 12 2020 Sérgio Basto <sergio@serjux.com> - 20.04.2-1
+- Update kdenlive to 20.04.2
+
 * Mon May 18 2020 Sérgio Basto <sergio@serjux.com> - 20.04.1-3
 - Add requires frei0r-plugins
 - Sort requires alphabetically
