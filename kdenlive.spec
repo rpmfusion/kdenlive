@@ -1,8 +1,9 @@
+%global __cmake_in_source_build 1
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 20.04.2
-Release: 2%{?dist}
+Version: 20.04.3
+Release: 1%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -172,6 +173,9 @@ fi
 
 
 %changelog
+* Mon Jul 20 2020 Sérgio Basto <sergio@serjux.com> - 20.04.3-1
+- Update kdenlive to 20.04.3
+
 * Mon Jul 20 2020 Sérgio Basto <sergio@serjux.com> - 20.04.2-2
 - qt5-qtquickcontrols is still required rfbz #5701 and #5702
 
