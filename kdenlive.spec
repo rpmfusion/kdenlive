@@ -2,7 +2,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 20.04.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -85,6 +85,8 @@ Requires: mlt-freeworld%{?_isa} >= %{mlt_version}
 %else
 Requires: mlt%{?_isa} >= %{mlt_version}
 %endif
+#qt5-qtquickcontrols is still required rfbz #5701 and #5702
+Requires: qt5-qtquickcontrols
 Requires: qt5-qtquickcontrols2
 Requires: frei0r-plugins
 
@@ -170,6 +172,9 @@ fi
 
 
 %changelog
+* Mon Jul 20 2020 Sérgio Basto <sergio@serjux.com> - 20.04.2-2
+- qt5-qtquickcontrols is still required rfbz #5701 and #5702
+
 * Fri Jun 12 2020 Sérgio Basto <sergio@serjux.com> - 20.04.2-1
 - Update kdenlive to 20.04.2
 
