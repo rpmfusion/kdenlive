@@ -1,4 +1,5 @@
 %global __cmake_in_source_build 1
+%global __cmake_in_source_build 1
 
 Name:    kdenlive
 Summary: Non-linear video editor
