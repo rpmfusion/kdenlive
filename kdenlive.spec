@@ -3,8 +3,8 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 20.04.3
-Release: 2%{?dist}
+Version: 20.08.0
+Release: 1%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -174,6 +174,9 @@ fi
 
 
 %changelog
+* Tue Aug 25 2020 Sérgio Basto <sergio@serjux.com> - 20.08.0-1
+- Update kdenlive to 20.08.0
+
 * Tue Aug 18 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 20.04.3-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
