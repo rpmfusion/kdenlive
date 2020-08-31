@@ -1,10 +1,10 @@
-%global __cmake_in_source_build 1
-%global __cmake_in_source_build 1
+%undefine __cmake_in_source_build
+%global _lto_cflags %{nil}
 
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 20.08.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -102,19 +102,14 @@ recent video technologies.
 
 
 %build
-mkdir %{_target_platform}
-pushd %{_target_platform}
-mv ../rttr-0.9.6/ rttr/
-
-%{cmake_kf5} .. \
+%{cmake_kf5} \
   -DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON -Wno-dev
-popd
 
-%make_build -C %{_target_platform}
+%cmake_build
 
 
 %install
-make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+%cmake_install
 
 ## unpackaged files
 rm -rfv  %{buildroot}%{_datadir}/doc/Kdenlive/
@@ -174,6 +169,9 @@ fi
 
 
 %changelog
+* Mon Aug 31 2020 Sérgio Basto <sergio@serjux.com> - 20.08.0-2
+- Use modern cmake macros and disable LTO (rfbz #5733)
+
 * Tue Aug 25 2020 Sérgio Basto <sergio@serjux.com> - 20.08.0-1
 - Update kdenlive to 20.08.0
 
