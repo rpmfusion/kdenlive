@@ -3,8 +3,8 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 20.08.0
-Release: 2%{?dist}
+Version: 20.08.1
+Release: 1%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -169,6 +169,9 @@ fi
 
 
 %changelog
+* Mon Sep 21 2020 Sérgio Basto <sergio@serjux.com> - 20.08.1-1
+- Update kdenlive to 20.08.1
+
 * Mon Aug 31 2020 Sérgio Basto <sergio@serjux.com> - 20.08.0-2
 - Use modern cmake macros and disable LTO (rfbz #5733)
 
