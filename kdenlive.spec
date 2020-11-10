@@ -3,7 +3,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 20.08.1
+Version: 20.08.3
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -157,10 +157,7 @@ fi
 %{_kf5_datadir}/knotifications5/kdenlive.notifyrc
 %{_kf5_datadir}/kservices5/mltpreview.desktop
 %{_kf5_datadir}/kxmlgui5/kdenlive/
-%{_kf5_sysconfdir}/xdg/kdenlive_keyboardschemes.knsrc
-%{_kf5_sysconfdir}/xdg/kdenlive_renderprofiles.knsrc
-%{_kf5_sysconfdir}/xdg/kdenlive_titles.knsrc
-%{_kf5_sysconfdir}/xdg/kdenlive_wipes.knsrc
+%{_datadir}/knsrcfiles/*.knsrc
 %{_kf5_datadir}/qlogging-categories5/kdenlive.categories
 %{_kf5_mandir}/man1/kdenlive.1*
 %{_kf5_mandir}/man1/kdenlive_render.1*
@@ -169,6 +166,9 @@ fi
 
 
 %changelog
+* Fri Nov 06 2020 Sérgio Basto <sergio@serjux.com> - 20.08.3-1
+- Update kdenlive to 20.08.3
+
 * Mon Sep 21 2020 Sérgio Basto <sergio@serjux.com> - 20.08.1-1
 - Update kdenlive to 20.08.1
 
