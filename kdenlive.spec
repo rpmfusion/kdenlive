@@ -3,7 +3,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 20.08.3
+Version: 20.12.0
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -166,6 +166,9 @@ fi
 
 
 %changelog
+* Mon Dec 28 2020 Sérgio Basto <sergio@serjux.com> - 20.12.0-1
+- Update kdenlive to 20.12.0
+
 * Fri Nov 06 2020 Sérgio Basto <sergio@serjux.com> - 20.08.3-1
 - Update kdenlive to 20.08.3
 
