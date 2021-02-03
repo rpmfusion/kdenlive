@@ -4,7 +4,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 20.12.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -166,6 +166,9 @@ fi
 
 
 %changelog
+* Wed Feb 03 2021 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 20.12.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Mon Jan 18 2021 Sérgio Basto <sergio@serjux.com> - 20.12.1-1
 - Update kdenlive to 20.12.1
 
