@@ -3,7 +3,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 20.12.2
+Version: 20.12.3
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -15,11 +15,6 @@ URL:     http://www.kdenlive.org
 %global stable stable
 %endif
 Source0: https://download.kde.org/%{stable}/release-service/%{version}/src/kdenlive-%{version}.tar.xz
-# With 19.04.3 it seems we can't build kdenlive without rttr [3] so it download and add rttr to kdenlive,
-# by patching rttr.CMakeLists.txt with rttr.CMakeLists.patch more mv ../rttr-0.9.6/ rttr/
-#[3] #https://invent.kde.org/kde/kdenlive/blob/master/rttr.CMakeLists.txt
-# https://invent.kde.org/thompsony/kdenlive/commit/2001ceb968f6064efabcd794977db5ef30fe6127
-Source1: https://github.com/rttrorg/rttr/archive/v0.9.6/rttr-0.9.6.tar.gz
 Source100: kdenlive-find-lang.sh
 Patch0: rttr.CMakeLists.patch
 
@@ -74,6 +69,7 @@ BuildRequires: pkgconfig(Qt5Script)
 BuildRequires: pkgconfig(Qt5Svg)
 BuildRequires: pkgconfig(Qt5WebKitWidgets)
 BuildRequires: pkgconfig(Qt5Widgets)
+BuildRequires: librttr-devel
 
 ## workaround for missing dependency in kf5-kio, can remove
 ## once kf5-kio-5.24.0-2 (or newer is available)
@@ -98,7 +94,7 @@ recent video technologies.
 
 
 %prep
-%autosetup -p1 -a1
+%autosetup -p1
 
 
 %build
@@ -166,6 +162,10 @@ fi
 
 
 %changelog
+* Mon Mar 08 2021 Sérgio Basto <sergio@serjux.com> - 20.12.3-1
+- Update kdenlive to 20.12.3
+- Use rttr package
+
 * Sat Feb 20 2021 Sérgio Basto <sergio@serjux.com> - 20.12.2-1
 - Update kdenlive to 20.12.2
 
