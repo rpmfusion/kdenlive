@@ -4,7 +4,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 20.12.3
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -16,7 +16,6 @@ URL:     http://www.kdenlive.org
 %endif
 Source0: https://download.kde.org/%{stable}/release-service/%{version}/src/kdenlive-%{version}.tar.xz
 Source100: kdenlive-find-lang.sh
-Patch0: rttr.CMakeLists.patch
 
 # Add support for finding html files with find-lang.sh --with-html on epel
 # https://github.com/rpm-software-management/rpm/commit/0c42871ff407a3eeb1e8b8c1de9395f35659c987
@@ -162,6 +161,9 @@ fi
 
 
 %changelog
+* Fri Mar 12 2021 Sérgio Basto <sergio@serjux.com> - 20.12.3-2
+- git rm rttr.CMakeLists.txt
+
 * Mon Mar 08 2021 Sérgio Basto <sergio@serjux.com> - 20.12.3-1
 - Update kdenlive to 20.12.3
 - Use rttr package
