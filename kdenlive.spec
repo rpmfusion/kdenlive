@@ -4,7 +4,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 20.12.3
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -161,6 +161,9 @@ fi
 
 
 %changelog
+* Sat Apr 24 2021 Leigh Scott <leigh123linux@gmail.com> - 20.12.3-3
+- Rebuilt for removed libstdc++ symbol (#1937698)
+
 * Fri Mar 12 2021 Sérgio Basto <sergio@serjux.com> - 20.12.3-2
 - git rm rttr.CMakeLists.txt
 
