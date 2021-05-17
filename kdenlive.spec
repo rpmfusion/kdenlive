@@ -3,8 +3,8 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 20.12.3
-Release: 3%{?dist}
+Version: 21.04.1
+Release: 1%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -43,6 +43,7 @@ BuildRequires: cmake(KF5ItemViews)
 BuildRequires: cmake(KF5KIO)
 BuildRequires: cmake(KF5JobWidgets)
 BuildRequires: cmake(KF5NewStuff)
+BuildRequires: cmake(Qt5NetworkAuth)
 BuildRequires: cmake(KF5Notifications)
 BuildRequires: cmake(KF5NotifyConfig)
 BuildRequires: cmake(KF5Plotting)
@@ -161,6 +162,9 @@ fi
 
 
 %changelog
+* Mon May 17 2021 Sérgio Basto <sergio@serjux.com> - 21.04.1-1
+- Update kdenlive to 21.04.1
+
 * Sat Apr 24 2021 Leigh Scott <leigh123linux@gmail.com> - 20.12.3-3
 - Rebuilt for removed libstdc++ symbol (#1937698)
 
