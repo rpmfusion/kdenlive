@@ -148,7 +148,7 @@ fi
 %{_kf5_datadir}/kdenlive/
 %{_kf5_datadir}/mime/packages/org.kde.kdenlive.xml
 %{_kf5_datadir}/mime/packages/westley.xml
-%{_kf5_datadir}/icons/hicolor/*/*/*
+%{_kf5_datadir}/icons/*/*/*/*
 %{_kf5_datadir}/config.kcfg/kdenlivesettings.kcfg
 %{_kf5_datadir}/knotifications5/kdenlive.notifyrc
 %{_kf5_datadir}/kservices5/mltpreview.desktop
