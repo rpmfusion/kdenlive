@@ -3,7 +3,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 21.04.1
+Version: 21.04.2
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -16,6 +16,7 @@ URL:     http://www.kdenlive.org
 %endif
 Source0: https://download.kde.org/%{stable}/release-service/%{version}/src/kdenlive-%{version}.tar.xz
 Source100: kdenlive-find-lang.sh
+#Patch0:  mlt.patch
 
 # Add support for finding html files with find-lang.sh --with-html on epel
 # https://github.com/rpm-software-management/rpm/commit/0c42871ff407a3eeb1e8b8c1de9395f35659c987
@@ -55,8 +56,8 @@ BuildRequires: cmake(KF5FileMetaData)
 BuildRequires: libappstream-glib
 
 BuildRequires: pkgconfig(libv4l2)
-BuildRequires: pkgconfig(mlt++) >= 6.6.0
-%global mlt_version %(pkg-config --modversion mlt++ 2>/dev/null || echo 6.6.0)
+BuildRequires: pkgconfig(mlt++) >= 6.20.0
+%global mlt_version %(pkg-config --modversion mlt++ 2>/dev/null || echo 6.20.0)
 
 BuildRequires: pkgconfig(Qt5Concurrent)
 BuildRequires: pkgconfig(Qt5DBus)
@@ -162,6 +163,9 @@ fi
 
 
 %changelog
+* Thu Jun 10 2021 Sérgio Basto <sergio@serjux.com> - 21.04.2-1
+- Update kdenlive to 21.04.2
+
 * Mon May 17 2021 Sérgio Basto <sergio@serjux.com> - 21.04.1-1
 - Update kdenlive to 21.04.1
 
