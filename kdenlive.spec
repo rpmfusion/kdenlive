@@ -4,7 +4,7 @@
 Name:    kdenlive
 Summary: Non-linear video editor
 Version: 21.04.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -17,6 +17,8 @@ URL:     http://www.kdenlive.org
 Source0: https://download.kde.org/%{stable}/release-service/%{version}/src/kdenlive-%{version}.tar.xz
 Source100: kdenlive-find-lang.sh
 #Patch0:  mlt.patch
+# Fix startup crash on Wayland (rfbz#5945)
+Patch1:  https://invent.kde.org/multimedia/kdenlive/commit/185b30362f1f2a3cf340e6fbcd92cd41157e2c9d.patch
 
 # Add support for finding html files with find-lang.sh --with-html on epel
 # https://github.com/rpm-software-management/rpm/commit/0c42871ff407a3eeb1e8b8c1de9395f35659c987
@@ -163,6 +165,9 @@ fi
 
 
 %changelog
+* Tue Jun 22 2021 Leigh Scott <leigh123linux@gmail.com> - 21.04.2-2
+- Fix startup crash on Wayland (rfbz#5945)
+
 * Thu Jun 10 2021 Sérgio Basto <sergio@serjux.com> - 21.04.2-1
 - Update kdenlive to 21.04.2
 
