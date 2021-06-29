@@ -79,12 +79,13 @@ BuildRequires: librttr-devel
 BuildRequires: kf5-kinit-devel
 %{?kf5_kinit_requires}
 Requires: dvdauthor
-Requires: dvgrab
 Requires: ffmpeg
 %if 0%{?fedora} >= 25 || 0%{?rhel} >= 7
 Requires: mlt-freeworld%{?_isa} >= %{mlt_version}
+Suggests: dvgrab
 %else
 Requires: mlt%{?_isa} >= %{mlt_version}
+Requires: dvgrab
 %endif
 #qt5-qtquickcontrols is still required rfbz #5701 and #5702
 Requires: qt5-qtquickcontrols
