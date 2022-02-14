@@ -3,8 +3,8 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 21.04.3
-Release: 4%{?dist}
+Version: 21.12.2
+Release: 1%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -56,8 +56,8 @@ BuildRequires: cmake(KF5FileMetaData)
 BuildRequires: libappstream-glib
 
 BuildRequires: pkgconfig(libv4l2)
-BuildRequires: pkgconfig(mlt++) >= 6.20.0
-%global mlt_version %(pkg-config --modversion mlt++ 2>/dev/null || echo 6.20.0)
+BuildRequires: pkgconfig(mlt++-7)
+%global mlt_version %(pkg-config --modversion mlt++ 2>/dev/null || echo 7.4.0)
 
 BuildRequires: pkgconfig(Qt5Concurrent)
 BuildRequires: pkgconfig(Qt5DBus)
@@ -161,6 +161,9 @@ fi
 
 
 %changelog
+* Mon Feb 14 2022 Sérgio Basto <sergio@serjux.com> - 21.12.2-1
+- Update kdenlive to 21.12.2
+
 * Wed Feb 09 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 21.04.3-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
