@@ -1,9 +1,8 @@
-%undefine __cmake_in_source_build
 %global _lto_cflags %{nil}
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 21.12.3
+Version: 22.04.0
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -161,6 +160,9 @@ fi
 
 
 %changelog
+* Tue Apr 26 2022 Leigh Scott <leigh123linux@gmail.com> - 22.04.0-1
+- Update ffmpegthumbs to 22.04.0
+
 * Wed Apr 13 2022 Sérgio Basto <sergio@serjux.com> - 21.12.3-1
 - Update kdenlive to 21.12.3
 
