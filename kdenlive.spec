@@ -2,7 +2,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 22.04.0
+Version: 22.04.3
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -160,6 +160,9 @@ fi
 
 
 %changelog
+* Thu Aug 04 2022 Leigh Scott <leigh123linux@gmail.com> - 22.04.3-1
+- Update kdenlive to 22.04.3
+
 * Tue Apr 26 2022 Leigh Scott <leigh123linux@gmail.com> - 22.04.0-1
 - Update kdenlive to 22.04.0
 
