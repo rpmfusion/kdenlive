@@ -2,8 +2,8 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 22.04.3
-Release: 2%{?dist}
+Version: 22.08.1
+Release: 1%{?dist}
 
 License: GPLv2+
 URL:     http://www.kdenlive.org
@@ -56,7 +56,6 @@ BuildRequires: libappstream-glib
 
 BuildRequires: pkgconfig(libv4l2)
 BuildRequires: pkgconfig(mlt++-7)
-%global mlt_version %(pkg-config --modversion mlt++ 2>/dev/null || echo 7.4.0)
 
 BuildRequires: pkgconfig(Qt5Concurrent)
 BuildRequires: pkgconfig(Qt5DBus)
@@ -77,7 +76,7 @@ BuildRequires: kf5-kinit-devel
 %{?kf5_kinit_requires}
 Requires: dvdauthor
 Requires: ffmpeg
-Requires: mlt-freeworld%{?_isa} >= %{mlt_version}
+Requires: mlt-freeworld%{?_isa}
 %if 0%{?fedora} >= 25 || 0%{?rhel} >= 7
 Suggests: dvgrab
 %endif
@@ -160,6 +159,10 @@ fi
 
 
 %changelog
+* Fri Sep 23 2022 Sérgio Basto <sergio@serjux.com> - 22.08.1-1
+- Update kdenlive to 22.08.1
+- Just requires mlt-freeworld, should be enough because mlt-freeworld requires same version of mlt
+
 * Sun Aug 07 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 22.04.3-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild and ffmpeg
   5.1
