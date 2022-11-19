@@ -2,7 +2,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 22.08.1
+Version: 22.08.3
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -159,6 +159,9 @@ fi
 
 
 %changelog
+* Sat Nov 19 2022 Sérgio Basto <sergio@serjux.com> - 22.08.3-1
+- Update kdenlive to 22.08.3
+
 * Fri Sep 23 2022 Sérgio Basto <sergio@serjux.com> - 22.08.1-1
 - Update kdenlive to 22.08.1
 - Just requires mlt-freeworld, should be enough because mlt-freeworld requires same version of mlt
