@@ -2,7 +2,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 22.08.3
+Version: 22.12.0
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -66,6 +66,7 @@ BuildRequires: pkgconfig(Qt5Quick)
 BuildRequires: pkgconfig(Qt5QuickControls2)
 BuildRequires: pkgconfig(Qt5Script)
 BuildRequires: pkgconfig(Qt5Svg)
+BuildRequires: pkgconfig(Qt5UiPlugin)
 BuildRequires: pkgconfig(Qt5WebKitWidgets)
 BuildRequires: pkgconfig(Qt5Widgets)
 BuildRequires: librttr-devel
@@ -156,9 +157,13 @@ fi
 %{_kf5_mandir}/man1/kdenlive_render.1*
 # consider subpkg for multilib
 %{_kf5_qtplugindir}/mltpreview.so
+%{_kf5_qtplugindir}/designer/kdenlivewidgets.so
 
 
 %changelog
+* Mon Dec 19 2022 Sérgio Basto <sergio@serjux.com> - 22.12.0-1
+- Update kdenlive to 22.12.0
+
 * Sat Nov 19 2022 Sérgio Basto <sergio@serjux.com> - 22.08.3-1
 - Update kdenlive to 22.08.3
 
