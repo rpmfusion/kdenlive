@@ -2,7 +2,7 @@
 
 Name:    kdenlive
 Summary: Non-linear video editor
-Version: 22.12.0
+Version: 22.12.1
 Release: 1%{?dist}
 
 License: GPLv2+
@@ -161,6 +161,9 @@ fi
 
 
 %changelog
+* Mon Jan 23 2023 Sérgio Basto <sergio@serjux.com> - 22.12.1-1
+- Update kdenlive to 22.12.1
+
 * Mon Dec 19 2022 Sérgio Basto <sergio@serjux.com> - 22.12.0-1
 - Update kdenlive to 22.12.0
 
