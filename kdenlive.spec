@@ -157,7 +157,7 @@ fi
 %{_kf5_mandir}/man1/kdenlive_render.1*
 # consider subpkg for multilib
 %{_kf5_qtplugindir}/mltpreview.so
-%{_kf5_qtplugindir}/designer/kdenlivewidgets.so
+#%%{_kf5_qtplugindir}/designer/kdenlivewidgets.so
 
 
 %changelog
